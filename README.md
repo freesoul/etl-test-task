@@ -41,8 +41,10 @@ The solution consists in a docker, which includes:
 Basically:
 ```
 Flask api <---- ES <------.
-    \                      \
-     `----> RabbitMQ ---> Consumer/Transformer/Inserter <----- HTTP
+    \                      \              ,---- HTTP to lux sites
+     `----> RabbitMQ ---> Consumer <--Downloader <--- Transformer
+                                ^--- Merger
+                                ^--- Inserter
 ```
 
 # Improvements

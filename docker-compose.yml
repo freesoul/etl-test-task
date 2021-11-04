@@ -20,31 +20,30 @@ services:
         - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
         - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq/
     networks:
-        - rabbitmq_net
+        - thenetwork
 
-  # elasticsearch:
-  #   image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
-  #   container_name: elasticsearch
-  #   environment:
-  #     - xpack.security.enabled=false
-  #     - discovery.type=single-node
-  #   ulimits:
-  #     memlock:
-  #       soft: -1
-  #       hard: -1
-  #     nofile:
-  #       soft: 65536
-  #       hard: 65536
-  #   cap_add:
-  #     - IPC_LOCK
-  #   volumes:
-  #     - elasticsearch-data:/usr/share/elasticsearch/data
-  #   ports:
-  #     - 9200:9200
-  #     - 9300:9300
-  #   networks:
-  #     - elastic
-
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
+    container_name: elasticsearch
+    environment:
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+    networks:
+      - thenetwork
 
   listener:
     build: ./src/listener
@@ -56,19 +55,17 @@ services:
     links: 
       - rabbitmq
     networks:
-      - rabbitmq_net
+      - thenetwork
       
-  # web:
-  #   build: ./src/flask_api
-  #   ports:
-  #     - "5000:5000"
-  # redis:
-  #   image: "redis:alpine"
-    
+  flask:
+    build: ./src/flask_api
+    ports:
+      - "5000:5000"
+    networks:
+      - thenetwork  
+
 networks:
-  rabbitmq_net:
-    driver: bridge
-  elastic:
+  thenetwork:
     driver: bridge
 
 volumes:

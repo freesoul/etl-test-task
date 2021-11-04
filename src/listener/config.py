@@ -32,7 +32,7 @@ RABBITMQ_USER = "guest"
 RABBITMQ_PASS = "guest"
 RABBITMQ_QUEUE = "communes_polling_queue"
 
-ES_HOST = "localhost"
+ES_HOST = "elasticsearch"
 ES_MAPPINGS = {
     "communes": {
         "properties": {

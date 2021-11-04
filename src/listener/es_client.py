@@ -33,9 +33,9 @@ class ESClient:
         elasticsearch.helpers.bulk(self.es, data, index="communes_rentals")
 
     def _ensure_indexes_exist(self):
+        existing_indices = list(self.es.indices.get_alias("*").keys())
         for index, mapping in self.mappings.items():
-            self.es.indices.delete(index=index, ignore=[400, 404])
-            existing_indices = list(self.es.indices.get_alias("*").keys())
+            # self.es.indices.delete(index=index, ignore=[400, 404])
             if index not in existing_indices:
                 logging.info("Creating index %s" % index)
                 self.es.indices.create(index=index, mappings=mapping)

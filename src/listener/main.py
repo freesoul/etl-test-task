@@ -1,8 +1,8 @@
 import os
 import logging
 from es_client import ESClient
-
-from config import ES_HOST, ES_MAPPINGS, RAW_DIR
+import pika
+from config import ES_HOST, ES_MAPPINGS, RAW_DIR, RABBITMQ_HOST, RABBITMQ_PORT, RABBITMQ_USER, RABBITMQ_PASS, RABBITMQ_QUEUE
 from downloader_lib import Downloader
 from merger_lib import Merger
 
@@ -15,7 +15,9 @@ else:
     LOGGER = logging.getLogger()
 
 
-if __name__ == "__main__":
+def callback(ch, method, properties, body):
+    # we don't really care about the body.
+    LOGGER.info("Received a request")
 
     downloader = Downloader()
     downloader.download()  # This calls the format transformer inside.
@@ -29,3 +31,16 @@ if __name__ == "__main__":
     client = ESClient(ES_HOST, ES_MAPPINGS)
     client.insertCommunes(communes)
     client.insertRentals(rental_prices)
+    LOGGER.info("Done")
+
+
+if __name__ == "__main__":
+
+    connection = pika.BlockingConnection(
+        pika.ConnectionParameters(RABBITMQ_HOST, RABBITMQ_PORT, "/", pika.PlainCredentials(RABBITMQ_USER, RABBITMQ_PASS))
+    )
+    channel = connection.channel()
+
+    channel.queue_declare(queue=RABBITMQ_QUEUE)
+    channel.basic_consume(queue=RABBITMQ_QUEUE, on_message_callback=callback, auto_ack=True)
+    channel.start_consuming()

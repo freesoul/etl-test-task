@@ -5,7 +5,7 @@ DATA_SOURCES = {
     "communes": {
         "url": "https://data.public.lu/en/datasets/r/15304974-6ea1-4e19-b368-8f20278d0eca",
         "format": "xlsx",
-        "first_value": (6, 0),
+        "first_value": (6, 0), # row, col
         "columns": [
             "commune_cadastrale",
             "commune_administrative",
@@ -18,7 +18,7 @@ DATA_SOURCES = {
     "prices_rent": {
         "url": "https://data.public.lu/fr/datasets/r/94e4a229-c564-4dd2-99b5-6b6e9d29eafd",
         "format": "xls",
-        "first_value": (0, 2),
+        "first_value": (0, 2), # row, col
         "sheets": [str(sheet) for sheet in list(range(2009, 2021))],
         "skip_until": "Commune",
         "stop_on": "nan",
@@ -26,8 +26,13 @@ DATA_SOURCES = {
     },
 }
 
-ES_HOST = "localhost"
+RABBITMQ_HOST = "rabbitmq"
+RABBITMQ_PORT = 5672
+RABBITMQ_USER = "guest"
+RABBITMQ_PASS = "guest"
+RABBITMQ_QUEUE = "communes_polling_queue"
 
+ES_HOST = "localhost"
 ES_MAPPINGS = {
     "communes": {
         "properties": {

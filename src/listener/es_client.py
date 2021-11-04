@@ -35,14 +35,6 @@ class ESClient:
         self._ensure_index_exists()
 
     def insert(self, data:list):
-        # data = [ 
-        #     {
-        #         "_type": 'document',
-        #         "_index" : ESClient.COMMUNES_INDEX_NAME,
-        #         "_id": base64.b64encode('_'.join(row).encode()).decode('utf-8'),
-        #         "_source": row,
-        #     } for row in data
-        # ]
         data = [ 
             {
                 "_id": base64.b64encode('_'.join(row.values()).encode()).decode('utf-8'),

@@ -5,7 +5,7 @@ import logging
 import requests
 
 from config import DATA_SOURCES, RAW_DIR
-from transformer import Transformer
+from transformer_lib import Transformer
 
 if __name__ == "__main__":
     from utils import configure_root_logger
@@ -23,7 +23,7 @@ class Downloader:
 
     def download(self, transform: bool = True):
         for name, info in DATA_SOURCES.items():
-            file_out_path = self.raw_data_path / ("%s.xlsx" % name)
+            file_out_path = self.raw_data_path / ("%s.%s" % (name, info['format']))
             if not os.path.isfile(file_out_path):
                 LOGGER.info("Requesting dataset: %s" % file_out_path)
                 content = requests.get(info["url"], allow_redirects=True).content

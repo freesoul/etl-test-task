@@ -24,7 +24,7 @@ https://data.public.lu/fr/datasets/prix-de-vente-des-appartements-par-commune/#_
 
 The solution consists in a docker, which includes:
 * RabbitMQ
-* ElasticSearch. Two indexes/mappings:
+* ElasticSearch. Two indexes/mappings: (find in src/listener/config.py)
     * communnes. The sections are inserted as nested "sections", because we assume that they will always be recovered.
     * communes_rentals. These are in a separate index, and requested only when needed.
 * Custom Flask API, which reads ElasticSearch, or triggers a RabbitMQ message.

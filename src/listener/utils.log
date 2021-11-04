@@ -3,3 +3,318 @@
 2021-11-04 13:55:44 INFO :root: Transforming dataset: /home/bytes/lemonads/spicyoffers/extern/docker/src/listener/data/transformed/limites.csv 
 2021-11-04 13:56:42 INFO :root: Using cached dataset: data/raw/limites.xlsx 
 2021-11-04 13:56:42 INFO :root: Using cached transformed dataset: /home/bytes/lemonads/spicyoffers/extern/docker/src/listener/data/transformed/limites.csv 
+2021-11-04 14:21:42 INFO :elasticsearch: GET http://localhost:9200/ [status:200 request:0.052s] 
+2021-11-04 14:21:42 DEBUG :elasticsearch: > None 
+2021-11-04 14:21:42 DEBUG :elasticsearch: < {
+  "name" : "4eceede98418",
+  "cluster_name" : "docker-cluster",
+  "cluster_uuid" : "LyrWqS6DRTKhx4LpZwKIog",
+  "version" : {
+    "number" : "7.4.0",
+    "build_flavor" : "default",
+    "build_type" : "docker",
+    "build_hash" : "22e1767283e61a198cb4db791ea66e3f11ab9910",
+    "build_date" : "2019-09-27T08:36:48.569419Z",
+    "build_snapshot" : false,
+    "lucene_version" : "8.2.0",
+    "minimum_wire_compatibility_version" : "6.8.0",
+    "minimum_index_compatibility_version" : "6.0.0-beta1"
+  },
+  "tagline" : "You Know, for Search"
+}
+ 
+2021-11-04 14:21:42 WARNING :elasticsearch: PUT http://localhost:9200/example_index [status:400 request:0.065s] 
+2021-11-04 14:21:42 DEBUG :elasticsearch: > {"settings":{"number_of_shards":5,"number_of_replicas":1},"mappings":{"examplecase":{"properties":{"address":{"index":"not_analyzed","type":"string"},"date_of_birth":{"index":"not_analyzed","format":"dateOptionalTime","type":"date"},"some_PK":{"index":"not_analyzed","type":"string"},"fave_colour":{"index":"analyzed","type":"string"},"email_domain":{"index":"not_analyzed","type":"string"}}}}} 
+2021-11-04 14:21:42 DEBUG :elasticsearch: < {"error":{"root_cause":[{"type":"mapper_parsing_exception","reason":"Root mapping definition has unsupported parameters:  [examplecase : {properties={fave_colour={index=analyzed, type=string}, address={index=not_analyzed, type=string}, some_PK={index=not_analyzed, type=string}, date_of_birth={format=dateOptionalTime, index=not_analyzed, type=date}, email_domain={index=not_analyzed, type=string}}}]"}],"type":"mapper_parsing_exception","reason":"Failed to parse mapping [_doc]: Root mapping definition has unsupported parameters:  [examplecase : {properties={fave_colour={index=analyzed, type=string}, address={index=not_analyzed, type=string}, some_PK={index=not_analyzed, type=string}, date_of_birth={format=dateOptionalTime, index=not_analyzed, type=date}, email_domain={index=not_analyzed, type=string}}}]","caused_by":{"type":"mapper_parsing_exception","reason":"Root mapping definition has unsupported parameters:  [examplecase : {properties={fave_colour={index=analyzed, type=string}, address={index=not_analyzed, type=string}, some_PK={index=not_analyzed, type=string}, date_of_birth={format=dateOptionalTime, index=not_analyzed, type=date}, email_domain={index=not_analyzed, type=string}}}]"}},"status":400} 
+2021-11-04 14:25:43 INFO :elasticsearch: GET http://localhost:9200/ [status:200 request:0.004s] 
+2021-11-04 14:25:43 DEBUG :elasticsearch: > None 
+2021-11-04 14:25:43 DEBUG :elasticsearch: < {
+  "name" : "4eceede98418",
+  "cluster_name" : "docker-cluster",
+  "cluster_uuid" : "LyrWqS6DRTKhx4LpZwKIog",
+  "version" : {
+    "number" : "7.4.0",
+    "build_flavor" : "default",
+    "build_type" : "docker",
+    "build_hash" : "22e1767283e61a198cb4db791ea66e3f11ab9910",
+    "build_date" : "2019-09-27T08:36:48.569419Z",
+    "build_snapshot" : false,
+    "lucene_version" : "8.2.0",
+    "minimum_wire_compatibility_version" : "6.8.0",
+    "minimum_index_compatibility_version" : "6.0.0-beta1"
+  },
+  "tagline" : "You Know, for Search"
+}
+ 
+2021-11-04 14:25:44 INFO :elasticsearch: PUT http://localhost:9200/example_index [status:200 request:0.821s] 
+2021-11-04 14:25:44 DEBUG :elasticsearch: > {"mappings":{"properties":{"show_id":{"type":"text"},"release_year":{"type":"integer"}}}} 
+2021-11-04 14:25:44 DEBUG :elasticsearch: < {"acknowledged":true,"shards_acknowledged":true,"index":"example_index"} 
+2021-11-04 14:26:08 INFO :elasticsearch: GET http://localhost:9200/ [status:200 request:0.004s] 
+2021-11-04 14:26:08 DEBUG :elasticsearch: > None 
+2021-11-04 14:26:08 DEBUG :elasticsearch: < {
+  "name" : "4eceede98418",
+  "cluster_name" : "docker-cluster",
+  "cluster_uuid" : "LyrWqS6DRTKhx4LpZwKIog",
+  "version" : {
+    "number" : "7.4.0",
+    "build_flavor" : "default",
+    "build_type" : "docker",
+    "build_hash" : "22e1767283e61a198cb4db791ea66e3f11ab9910",
+    "build_date" : "2019-09-27T08:36:48.569419Z",
+    "build_snapshot" : false,
+    "lucene_version" : "8.2.0",
+    "minimum_wire_compatibility_version" : "6.8.0",
+    "minimum_index_compatibility_version" : "6.0.0-beta1"
+  },
+  "tagline" : "You Know, for Search"
+}
+ 
+2021-11-04 14:26:08 WARNING :elasticsearch: PUT http://localhost:9200/example_index [status:400 request:0.004s] 
+2021-11-04 14:26:08 DEBUG :elasticsearch: > {"mappings":{"mappings":{"properties":{"show_id":{"type":"text"},"release_year":{"type":"integer"}}}}} 
+2021-11-04 14:26:08 DEBUG :elasticsearch: < {"error":{"root_cause":[{"type":"resource_already_exists_exception","reason":"index [example_index/64p5n7LbQU2j18AIgSSMTw] already exists","index_uuid":"64p5n7LbQU2j18AIgSSMTw","index":"example_index"}],"type":"resource_already_exists_exception","reason":"index [example_index/64p5n7LbQU2j18AIgSSMTw] already exists","index_uuid":"64p5n7LbQU2j18AIgSSMTw","index":"example_index"},"status":400} 
+2021-11-04 14:26:33 INFO :elasticsearch: GET http://localhost:9200/ [status:200 request:0.004s] 
+2021-11-04 14:26:33 DEBUG :elasticsearch: > None 
+2021-11-04 14:26:33 DEBUG :elasticsearch: < {
+  "name" : "4eceede98418",
+  "cluster_name" : "docker-cluster",
+  "cluster_uuid" : "LyrWqS6DRTKhx4LpZwKIog",
+  "version" : {
+    "number" : "7.4.0",
+    "build_flavor" : "default",
+    "build_type" : "docker",
+    "build_hash" : "22e1767283e61a198cb4db791ea66e3f11ab9910",
+    "build_date" : "2019-09-27T08:36:48.569419Z",
+    "build_snapshot" : false,
+    "lucene_version" : "8.2.0",
+    "minimum_wire_compatibility_version" : "6.8.0",
+    "minimum_index_compatibility_version" : "6.0.0-beta1"
+  },
+  "tagline" : "You Know, for Search"
+}
+ 
+2021-11-04 14:26:33 INFO :elasticsearch: DELETE http://localhost:9200/example_index [status:200 request:0.201s] 
+2021-11-04 14:26:33 DEBUG :elasticsearch: > None 
+2021-11-04 14:26:33 DEBUG :elasticsearch: < {"acknowledged":true} 
+2021-11-04 14:26:45 INFO :elasticsearch: GET http://localhost:9200/ [status:200 request:0.004s] 
+2021-11-04 14:26:45 DEBUG :elasticsearch: > None 
+2021-11-04 14:26:45 DEBUG :elasticsearch: < {
+  "name" : "4eceede98418",
+  "cluster_name" : "docker-cluster",
+  "cluster_uuid" : "LyrWqS6DRTKhx4LpZwKIog",
+  "version" : {
+    "number" : "7.4.0",
+    "build_flavor" : "default",
+    "build_type" : "docker",
+    "build_hash" : "22e1767283e61a198cb4db791ea66e3f11ab9910",
+    "build_date" : "2019-09-27T08:36:48.569419Z",
+    "build_snapshot" : false,
+    "lucene_version" : "8.2.0",
+    "minimum_wire_compatibility_version" : "6.8.0",
+    "minimum_index_compatibility_version" : "6.0.0-beta1"
+  },
+  "tagline" : "You Know, for Search"
+}
+ 
+2021-11-04 14:26:45 WARNING :elasticsearch: PUT http://localhost:9200/example_index [status:400 request:0.013s] 
+2021-11-04 14:26:45 DEBUG :elasticsearch: > {"mappings":{"mappings":{"properties":{"show_id":{"type":"text"},"release_year":{"type":"integer"}}}}} 
+2021-11-04 14:26:45 DEBUG :elasticsearch: < {"error":{"root_cause":[{"type":"mapper_parsing_exception","reason":"Root mapping definition has unsupported parameters:  [mappings : {properties={show_id={type=text}, release_year={type=integer}}}]"}],"type":"mapper_parsing_exception","reason":"Failed to parse mapping [_doc]: Root mapping definition has unsupported parameters:  [mappings : {properties={show_id={type=text}, release_year={type=integer}}}]","caused_by":{"type":"mapper_parsing_exception","reason":"Root mapping definition has unsupported parameters:  [mappings : {properties={show_id={type=text}, release_year={type=integer}}}]"}},"status":400} 
+2021-11-04 14:26:53 INFO :elasticsearch: GET http://localhost:9200/ [status:200 request:0.004s] 
+2021-11-04 14:26:53 DEBUG :elasticsearch: > None 
+2021-11-04 14:26:53 DEBUG :elasticsearch: < {
+  "name" : "4eceede98418",
+  "cluster_name" : "docker-cluster",
+  "cluster_uuid" : "LyrWqS6DRTKhx4LpZwKIog",
+  "version" : {
+    "number" : "7.4.0",
+    "build_flavor" : "default",
+    "build_type" : "docker",
+    "build_hash" : "22e1767283e61a198cb4db791ea66e3f11ab9910",
+    "build_date" : "2019-09-27T08:36:48.569419Z",
+    "build_snapshot" : false,
+    "lucene_version" : "8.2.0",
+    "minimum_wire_compatibility_version" : "6.8.0",
+    "minimum_index_compatibility_version" : "6.0.0-beta1"
+  },
+  "tagline" : "You Know, for Search"
+}
+ 
+2021-11-04 14:26:54 INFO :elasticsearch: PUT http://localhost:9200/example_index [status:200 request:0.642s] 
+2021-11-04 14:26:54 DEBUG :elasticsearch: > {"mappings":{"properties":{"show_id":{"type":"text"},"release_year":{"type":"integer"}}}} 
+2021-11-04 14:26:54 DEBUG :elasticsearch: < {"acknowledged":true,"shards_acknowledged":true,"index":"example_index"} 
+2021-11-04 14:31:13 INFO :elasticsearch: GET http://localhost:9200/ [status:200 request:0.004s] 
+2021-11-04 14:31:13 DEBUG :elasticsearch: > None 
+2021-11-04 14:31:13 DEBUG :elasticsearch: < {
+  "name" : "4eceede98418",
+  "cluster_name" : "docker-cluster",
+  "cluster_uuid" : "LyrWqS6DRTKhx4LpZwKIog",
+  "version" : {
+    "number" : "7.4.0",
+    "build_flavor" : "default",
+    "build_type" : "docker",
+    "build_hash" : "22e1767283e61a198cb4db791ea66e3f11ab9910",
+    "build_date" : "2019-09-27T08:36:48.569419Z",
+    "build_snapshot" : false,
+    "lucene_version" : "8.2.0",
+    "minimum_wire_compatibility_version" : "6.8.0",
+    "minimum_index_compatibility_version" : "6.0.0-beta1"
+  },
+  "tagline" : "You Know, for Search"
+}
+ 
+2021-11-04 14:31:13 INFO :elasticsearch: GET http://localhost:9200/*/_alias [status:200 request:0.003s] 
+2021-11-04 14:31:13 DEBUG :elasticsearch: > None 
+2021-11-04 14:31:13 DEBUG :elasticsearch: < {"example_index":{"aliases":{}}} 
+2021-11-04 14:31:35 INFO :elasticsearch: GET http://localhost:9200/ [status:200 request:0.004s] 
+2021-11-04 14:31:35 DEBUG :elasticsearch: > None 
+2021-11-04 14:31:35 DEBUG :elasticsearch: < {
+  "name" : "4eceede98418",
+  "cluster_name" : "docker-cluster",
+  "cluster_uuid" : "LyrWqS6DRTKhx4LpZwKIog",
+  "version" : {
+    "number" : "7.4.0",
+    "build_flavor" : "default",
+    "build_type" : "docker",
+    "build_hash" : "22e1767283e61a198cb4db791ea66e3f11ab9910",
+    "build_date" : "2019-09-27T08:36:48.569419Z",
+    "build_snapshot" : false,
+    "lucene_version" : "8.2.0",
+    "minimum_wire_compatibility_version" : "6.8.0",
+    "minimum_index_compatibility_version" : "6.0.0-beta1"
+  },
+  "tagline" : "You Know, for Search"
+}
+ 
+2021-11-04 14:31:35 INFO :elasticsearch: GET http://localhost:9200/*/_alias [status:200 request:0.002s] 
+2021-11-04 14:31:35 DEBUG :elasticsearch: > None 
+2021-11-04 14:31:35 DEBUG :elasticsearch: < {"example_index":{"aliases":{}}} 
+2021-11-04 14:34:02 INFO :elasticsearch: GET http://localhost:9200/ [status:200 request:0.004s] 
+2021-11-04 14:34:02 DEBUG :elasticsearch: > None 
+2021-11-04 14:34:02 DEBUG :elasticsearch: < {
+  "name" : "4eceede98418",
+  "cluster_name" : "docker-cluster",
+  "cluster_uuid" : "LyrWqS6DRTKhx4LpZwKIog",
+  "version" : {
+    "number" : "7.4.0",
+    "build_flavor" : "default",
+    "build_type" : "docker",
+    "build_hash" : "22e1767283e61a198cb4db791ea66e3f11ab9910",
+    "build_date" : "2019-09-27T08:36:48.569419Z",
+    "build_snapshot" : false,
+    "lucene_version" : "8.2.0",
+    "minimum_wire_compatibility_version" : "6.8.0",
+    "minimum_index_compatibility_version" : "6.0.0-beta1"
+  },
+  "tagline" : "You Know, for Search"
+}
+ 
+2021-11-04 14:34:02 INFO :elasticsearch: GET http://localhost:9200/*/_alias [status:200 request:0.002s] 
+2021-11-04 14:34:02 DEBUG :elasticsearch: > None 
+2021-11-04 14:34:02 DEBUG :elasticsearch: < {"example_index":{"aliases":{}}} 
+2021-11-04 14:34:02 INFO :root: Creating index communes 
+2021-11-04 14:34:11 INFO :elasticsearch: GET http://localhost:9200/ [status:200 request:0.003s] 
+2021-11-04 14:34:11 DEBUG :elasticsearch: > None 
+2021-11-04 14:34:11 DEBUG :elasticsearch: < {
+  "name" : "4eceede98418",
+  "cluster_name" : "docker-cluster",
+  "cluster_uuid" : "LyrWqS6DRTKhx4LpZwKIog",
+  "version" : {
+    "number" : "7.4.0",
+    "build_flavor" : "default",
+    "build_type" : "docker",
+    "build_hash" : "22e1767283e61a198cb4db791ea66e3f11ab9910",
+    "build_date" : "2019-09-27T08:36:48.569419Z",
+    "build_snapshot" : false,
+    "lucene_version" : "8.2.0",
+    "minimum_wire_compatibility_version" : "6.8.0",
+    "minimum_index_compatibility_version" : "6.0.0-beta1"
+  },
+  "tagline" : "You Know, for Search"
+}
+ 
+2021-11-04 14:34:11 INFO :elasticsearch: GET http://localhost:9200/*/_alias [status:200 request:0.002s] 
+2021-11-04 14:34:11 DEBUG :elasticsearch: > None 
+2021-11-04 14:34:11 DEBUG :elasticsearch: < {"example_index":{"aliases":{}}} 
+2021-11-04 14:34:11 INFO :root: Creating index communes 
+2021-11-04 14:34:11 WARNING :elasticsearch: PUT http://localhost:9200/example_index [status:400 request:0.003s] 
+2021-11-04 14:34:11 DEBUG :elasticsearch: > {"mappings":{"properties":{"show_id":{"type":"text"},"release_year":{"type":"integer"}}}} 
+2021-11-04 14:34:11 DEBUG :elasticsearch: < {"error":{"root_cause":[{"type":"resource_already_exists_exception","reason":"index [example_index/YL7gJeIqSgeAgkv7B5bY9g] already exists","index_uuid":"YL7gJeIqSgeAgkv7B5bY9g","index":"example_index"}],"type":"resource_already_exists_exception","reason":"index [example_index/YL7gJeIqSgeAgkv7B5bY9g] already exists","index_uuid":"YL7gJeIqSgeAgkv7B5bY9g","index":"example_index"},"status":400} 
+2021-11-04 14:34:35 INFO :elasticsearch: GET http://localhost:9200/ [status:200 request:0.005s] 
+2021-11-04 14:34:35 DEBUG :elasticsearch: > None 
+2021-11-04 14:34:35 DEBUG :elasticsearch: < {
+  "name" : "4eceede98418",
+  "cluster_name" : "docker-cluster",
+  "cluster_uuid" : "LyrWqS6DRTKhx4LpZwKIog",
+  "version" : {
+    "number" : "7.4.0",
+    "build_flavor" : "default",
+    "build_type" : "docker",
+    "build_hash" : "22e1767283e61a198cb4db791ea66e3f11ab9910",
+    "build_date" : "2019-09-27T08:36:48.569419Z",
+    "build_snapshot" : false,
+    "lucene_version" : "8.2.0",
+    "minimum_wire_compatibility_version" : "6.8.0",
+    "minimum_index_compatibility_version" : "6.0.0-beta1"
+  },
+  "tagline" : "You Know, for Search"
+}
+ 
+2021-11-04 14:34:35 INFO :elasticsearch: GET http://localhost:9200/*/_alias [status:200 request:0.002s] 
+2021-11-04 14:34:35 DEBUG :elasticsearch: > None 
+2021-11-04 14:34:35 DEBUG :elasticsearch: < {"example_index":{"aliases":{}}} 
+2021-11-04 14:34:35 INFO :root: Creating index communes 
+2021-11-04 14:34:36 INFO :elasticsearch: PUT http://localhost:9200/communes [status:200 request:0.703s] 
+2021-11-04 14:34:36 DEBUG :elasticsearch: > {"mappings":{"properties":{"show_id":{"type":"text"},"release_year":{"type":"integer"}}}} 
+2021-11-04 14:34:36 DEBUG :elasticsearch: < {"acknowledged":true,"shards_acknowledged":true,"index":"communes"} 
+2021-11-04 14:35:12 INFO :elasticsearch: GET http://localhost:9200/ [status:200 request:0.004s] 
+2021-11-04 14:35:12 DEBUG :elasticsearch: > None 
+2021-11-04 14:35:12 DEBUG :elasticsearch: < {
+  "name" : "4eceede98418",
+  "cluster_name" : "docker-cluster",
+  "cluster_uuid" : "LyrWqS6DRTKhx4LpZwKIog",
+  "version" : {
+    "number" : "7.4.0",
+    "build_flavor" : "default",
+    "build_type" : "docker",
+    "build_hash" : "22e1767283e61a198cb4db791ea66e3f11ab9910",
+    "build_date" : "2019-09-27T08:36:48.569419Z",
+    "build_snapshot" : false,
+    "lucene_version" : "8.2.0",
+    "minimum_wire_compatibility_version" : "6.8.0",
+    "minimum_index_compatibility_version" : "6.0.0-beta1"
+  },
+  "tagline" : "You Know, for Search"
+}
+ 
+2021-11-04 14:35:12 INFO :elasticsearch: DELETE http://localhost:9200/communes [status:200 request:0.206s] 
+2021-11-04 14:35:12 DEBUG :elasticsearch: > None 
+2021-11-04 14:35:12 DEBUG :elasticsearch: < {"acknowledged":true} 
+2021-11-04 14:35:12 INFO :elasticsearch: GET http://localhost:9200/*/_alias [status:200 request:0.002s] 
+2021-11-04 14:35:12 DEBUG :elasticsearch: > None 
+2021-11-04 14:35:12 DEBUG :elasticsearch: < {"example_index":{"aliases":{}}} 
+2021-11-04 14:35:12 INFO :root: Creating index communes 
+2021-11-04 14:35:12 INFO :elasticsearch: PUT http://localhost:9200/communes [status:200 request:0.599s] 
+2021-11-04 14:35:12 DEBUG :elasticsearch: > {"mappings":{"properties":{"show_id":{"type":"text"},"release_year":{"type":"integer"}}}} 
+2021-11-04 14:35:12 DEBUG :elasticsearch: < {"acknowledged":true,"shards_acknowledged":true,"index":"communes"} 
+2021-11-04 14:35:27 INFO :elasticsearch: GET http://localhost:9200/ [status:200 request:0.003s] 
+2021-11-04 14:35:27 DEBUG :elasticsearch: > None 
+2021-11-04 14:35:27 DEBUG :elasticsearch: < {
+  "name" : "4eceede98418",
+  "cluster_name" : "docker-cluster",
+  "cluster_uuid" : "LyrWqS6DRTKhx4LpZwKIog",
+  "version" : {
+    "number" : "7.4.0",
+    "build_flavor" : "default",
+    "build_type" : "docker",
+    "build_hash" : "22e1767283e61a198cb4db791ea66e3f11ab9910",
+    "build_date" : "2019-09-27T08:36:48.569419Z",
+    "build_snapshot" : false,
+    "lucene_version" : "8.2.0",
+    "minimum_wire_compatibility_version" : "6.8.0",
+    "minimum_index_compatibility_version" : "6.0.0-beta1"
+  },
+  "tagline" : "You Know, for Search"
+}
+ 
+2021-11-04 14:35:27 INFO :elasticsearch: DELETE http://localhost:9200/example_index [status:200 request:0.108s] 
+2021-11-04 14:35:27 DEBUG :elasticsearch: > None 
+2021-11-04 14:35:27 DEBUG :elasticsearch: < {"acknowledged":true} 

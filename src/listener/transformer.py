@@ -3,7 +3,6 @@ import pathlib
 import csv
 import logging
 
-import requests
 import openpyxl
 
 from config import DATA_SOURCES, RAW_DIR, TRANSFORMED_DIR

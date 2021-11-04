@@ -9,3 +9,5 @@ DATA_SOURCES = {
         "first_value" : (5, 0)
     }
 }
+
+ES_HOST = 'localhost'

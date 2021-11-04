@@ -1,4 +1,4 @@
 requests
-pandas==0.24.2
 openpyxl
 xlrd
+elasticsearch

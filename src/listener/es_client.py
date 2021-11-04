@@ -12,42 +12,32 @@ else:
 
 
 class ESClient:
-
-    COMMUNES_INDEX_NAME = "communes"
-    MAPPING_COMMUNES = {
-        "properties": {
-            "commune_cadastrale": {"type": "text"},
-            "commune_administrative": {"type": "text"},
-            "code_section": {"type": "text"},
-            "nom_section": {"type": "text"},
-            "nom_section_pretty": {"type": "text"},
-            "code_abbreviation": {"type": "text"},
-        }
-    }
-
-    def __init__(self, host: str):
+    def __init__(self, host: str, mappings: dict):
         self.es = elasticsearch.Elasticsearch(
             [
                 {"host": host},
             ],
             timeout=300,
         )
-        self._ensure_index_exists()
+        self.mappings = mappings
+        self._ensure_indexes_exist()
 
-    def insert(self, data:list):
-        data = [ 
-            {
-                "_id": base64.b64encode('_'.join(row.values()).encode()).decode('utf-8'),
-                **row
-            } for row in data
-        ]
-        elasticsearch.helpers.bulk(self.es, data, index=ESClient.COMMUNES_INDEX_NAME)
+    def insertCommunes(self, data: list):
+        # id is base64 of everything related to the commune (therefore excepting sections)
+        data = [{"_id": base64.b64encode("_".join(list(row.values())[:3]).encode()).decode("utf-8"), **row} for row in data]
+        elasticsearch.helpers.bulk(self.es, data, index="communes")
 
-    def _ensure_index_exists(self):
-        self.es.indices.delete(index=ESClient.COMMUNES_INDEX_NAME, ignore=[400, 404])
-        indices = list(self.es.indices.get_alias("*").keys())
-        if ESClient.COMMUNES_INDEX_NAME not in indices:
-            logging.info("Creating index %s" % ESClient.COMMUNES_INDEX_NAME)
-            self.es.indices.create(index=ESClient.COMMUNES_INDEX_NAME, mappings=ESClient.MAPPING_COMMUNES)
-        else:
-            logging.info("Found index %s" % ESClient.COMMUNES_INDEX_NAME)
+    def insertRentals(self, data: list):
+        # _id is base64 of year + commune
+        data = [{"_id": base64.b64encode(("%s_%s" % (row["commune"], str(row["year"]))).encode()).decode("utf-8"), **row} for row in data]
+        elasticsearch.helpers.bulk(self.es, data, index="communes_rentals")
+
+    def _ensure_indexes_exist(self):
+        for index, mapping in self.mappings.items():
+            self.es.indices.delete(index=index, ignore=[400, 404])
+            existing_indices = list(self.es.indices.get_alias("*").keys())
+            if index not in existing_indices:
+                logging.info("Creating index %s" % index)
+                self.es.indices.create(index=index, mappings=mapping)
+            else:
+                logging.info("Found index %s" % index)

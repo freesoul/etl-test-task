@@ -37,6 +37,8 @@ class Transformer:
                     sh = wb.active
                     with open(file_out_path, "w") as f:
                         c = csv.writer(f)
+                        if 'columns' in info.keys():
+                            c.writerow(info['columns'])
                         for i_row, r in enumerate(sh.rows):
                             if i_row < info["first_value"][0]:
                                 continue

@@ -37,10 +37,29 @@ The solution consists in a docker, which includes:
     * Reformatting them into easy to handle .csv
     * Transforming them to insert into the ElasticSearch mapping
 
+
+Basically:
+```
+Flask api <---- ES <------.
+    \                      \
+     `----> RabbitMQ ---> Consumer/Transformer/Inserter <----- HTTP
+```
+
 # Improvements
 
 * No swagger was included.
 * The price of apparments was not included (only commune + rental prices)
+* File structure (eg. making a libs folderfor the listener)
+
+# Consumer file structure
+Under `src/listener` you will find:
+
+* `config.py` Find here the ES mappings and so on.
+* `main.py` This runs the listener
+* `es_client.py` This creates the mapping and inserts the data into the indices
+* `downloader_lib.py` This downloads the files in config.py and reformats them (xls/xlsx -> csv). Before formatting they are in data/raw. After, in data/transformed.
+* `merger_lib.py` This reads the files in data/transformed, and manipulates the structure to be suitable for the mappings.
+* `transformer_lib.py` The helper which is used by downloader
 
 # Running
 

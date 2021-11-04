@@ -47,12 +47,6 @@ Flask api <---- ES <------.
                                 ^--- Inserter
 ```
 
-# Improvements
-
-* No swagger was included.
-* The price of apparments was not included (only commune + rental prices)
-* File structure (eg. making a libs folderfor the listener)
-
 # Consumer file structure
 Under `src/listener` you will find:
 
@@ -63,10 +57,24 @@ Under `src/listener` you will find:
 * `merger_lib.py` This reads the files in data/transformed, and manipulates the structure to be suitable for the mappings.
 * `transformer_lib.py` The helper which is used by downloader
 
+# Hardest parts
+
+Definitely the transformer_lib.py.
+I had to use a library to load the .xls and other different to load the .xlsx.
+I tried to make it somewhat reusable, by manipulating the config.py.
+
+# Improvements
+
+* No swagger was included.
+* The price of apparments was not included (only commune + rental prices)
+* File structure (eg. making a libs folderfor the listener)
+* Making (even) more reusable the code in transformer_lib, merger_lib, etc
+
 # Running
 
 Git clone.
 Install composer and docker-compose if you do not have them.
 You may need to `sudo chmod 666 /var/run/docker.sock`.
-Run `docker-compose up` and you should have the API working on http://localhost:5000.
+Run `docker-compose up` and you should have the API working on http://localhost:5000 
+(but you need to specify the exact route, as there is no Swagger).
 

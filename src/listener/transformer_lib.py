@@ -66,4 +66,4 @@ class Transformer:
 
 if __name__ == "__main__":
     transformer = Transformer()
-    transformer.transform("limites", force=True)
+    transformer.transform("communes", force=True)

@@ -28,9 +28,9 @@ The solution consists in a docker, which includes:
     * communnes. The sections are inserted as nested "sections", because we assume that they will always be recovered.
     * communes_rentals. These are in a separate index, and requested only when needed.
 * Custom Flask API, which reads ElasticSearch, or triggers a RabbitMQ message.
-    * http://localhost:9200/communes/download-and-insert
-    * http://localhost:9200/communes/
-    * http://localhost:9200/communes/Bertrange
+    * http://localhost:5000/communes/download-and-insert
+    * http://localhost:5000/communes/
+    * http://localhost:5000/communes/Bertrange
     The last two routes handle adittionally a "include_rents" boolean query parameter (default true)
 * Custom RabbitMQ consumer, which, on receiving a message, it triggers the next pipeline:
     * Downloading the .xls / .xlsx from government.
@@ -69,12 +69,14 @@ I tried to make it somewhat reusable, by manipulating the config.py.
 * The price of apparments was not included (only commune + rental prices)
 * File structure (eg. making a libs folderfor the listener)
 * Making (even) more reusable the code in transformer_lib, merger_lib, etc
+* Add limits to the API requests (currently size is 2000, which is enough), and limited size insertion bulks
 
 # Running
 
 Git clone.
 Install composer and docker-compose if you do not have them.
-You may need to `sudo chmod 666 /var/run/docker.sock`.
+You may need to `sudo chmod 666 /var/run/docker.sock`. Also I do not remember if `sudo apt-get install python3-openpyxl`
+installs something that is low level enough to be needed 
 Run `docker-compose up` and you should have the API working on http://localhost:5000 
 (but you need to specify the exact route, as there is no Swagger).
 
